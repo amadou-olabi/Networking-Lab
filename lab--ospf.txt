@@ -1,0 +1,99 @@
+
+############ route 0 ############
+
+enable
+configure terminal
+interface fa 0/0
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+no shutdown
+end
+
+enable
+configure terminal
+interface Serial 0/1/0
+ip address 10.220.20.2 255.0.0.0
+clock rate 128000
+no shutdown
+no shutdown
+end
+
+-----------------------------------
+enable
+configure terminal
+route ospf 1
+network 192.168.10.0 0.0.0.255 area 1
+network 10.220.20.0 0.255.255.255 area 1
+end
+
+################################
+
+############ route 1 ############
+
+enable
+configure terminal
+interface fa 0/0
+ip address 192.168.20.1 255.255.255.0
+no shutdown
+no shutdown
+end
+
+enable
+configure terminal
+interface Serial 0/1/0
+ip address 10.220.20.1 255.0.0.0
+no shutdown
+no shutdown
+end
+
+enable
+configure terminal
+interface Serial 0/1/1
+ip address 11.220.20.1 255.0.0.0
+clock rate 128000
+no shutdown
+no shutdown
+end
+
+-------------------------------------
+enable
+configure terminal
+route ospf 1
+network 192.168.20.0 0.0.0.255 area 0
+network 10.220.20.0 0.255.255.255 area 1
+network 11.220.20.0 0.255.255.255 area 2
+end
+
+################################
+
+############ route 2 ############
+
+configure terminal
+interface fa 0/0
+ip address 192.168.30.1 255.255.255.0
+no shutdown
+no shutdown
+end
+
+enable
+configure terminal
+interface Serial 0/1/0
+ip address 11.220.20.2 255.0.0.0
+no shutdown
+no shutdown
+end
+--------------------------------------
+enable
+configure terminal
+route ospf 1
+network 192.168.30.0 0.0.0.255 area 2
+network 11.220.20.0 0.255.255.255 area 2
+end
+
+################################
+
+
+$$$$$----EMAIL DETAIL-----------
+email: redwankarim@iut-dhaka.edu
+subject: [CSE 4512 OSPF LAB]
+$$$$----------------------------
