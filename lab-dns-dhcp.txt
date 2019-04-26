@@ -1,0 +1,37 @@
+----DNS && DHCP-------
+####****DHCP#####
+enable
+configure terminal
+ip dhcp pool IP10
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+ip dhcp exc 192.168.10.1 192.168.10.10
+exit
+end
+copy running-config startup-config
+sh run
+
+#####****DNS
+
+enable
+configure terminal
+ip dhcp pool IP10
+dns-server 192.168.10.5
+end
+copy running-config startup-config
+sh run
+
+enable
+configure terminal
+interface fa 0/0
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+end
+
+
+enable
+configure terminal
+interface fa 0/0
+ip address 192.168.20.1 255.255.255.0
+no shutdown
+end
