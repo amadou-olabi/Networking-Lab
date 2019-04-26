@@ -1,0 +1,18 @@
+set x 10
+puts “x is $x”
+
+#functions and expressions:
+
+set y [pow x 2]
+set y [expr x*x]
+
+puts "y is $y" 
+
+#control flow:
+
+if {$x > 0} { return $x } else {
+	return [expr -$x] }
+while { $x > 0 } {
+	puts $x
+	incr x –1
+}
